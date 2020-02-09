@@ -1,31 +1,35 @@
 <?php
 
+use Core\Init;
+
 //autoload
 require_once dirname(__FILE__).'/Config.php';
-
-
-// includes
-require_once INCLUDE_DIR.'/includes/Template.php';
-require_once INCLUDE_DIR.'/includes/Router.php';
-require_once INCLUDE_DIR.'/includes/Init.php';
-require_once INCLUDE_DIR.'/includes/Controller.php';
-require_once INCLUDE_DIR.'/includes/Model.php';
-
+require_once dirname(__FILE__).'/Autoload.php';
 
 
 //controllers
-require_once INCLUDE_DIR.'/controllers/homeController.php';
-require_once INCLUDE_DIR.'/controllers/usersController.php';
-require_once INCLUDE_DIR.'/controllers/boxController.php';
+require_once INCLUDE_DIR.'App/Controllers/HomeController.php';
+require_once INCLUDE_DIR.'App/Controllers/RegisterController.php';
+require_once INCLUDE_DIR.'App/Controllers/LoginController.php';
+require_once INCLUDE_DIR.'App/Controllers/UserAnswersController.php';
+
+
+
+
 
 //Models
-require_once INCLUDE_DIR.'/models/Home.php';
-require_once INCLUDE_DIR.'/models/Box.php';
+require_once INCLUDE_DIR.'App/Models/UserAnswer.php';
+require_once INCLUDE_DIR.'App/Models/Survey.php';
+require_once INCLUDE_DIR.'App/Models/User.php';
+
+//Helpers
+require_once INCLUDE_DIR.'App/Helpers/StatisticHelper.php';
+
+// require_once INCLUDE_DIR.'/models/Box.php';
+
+
 
 //  --------- INDEX LOAD CONTROLLER  -------------
-$init = Init::getInstance();
-$controller = $init->createController();
 
-if($controller){
-    $controller->executeAction();
-}
+$init = new Init();
+
